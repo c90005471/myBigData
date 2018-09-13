@@ -1,0 +1,33 @@
+server:
+  port: 9980
+  servlet:
+    context-path: /bigdata
+
+spring:
+  mvc:
+    view:
+      prefix: /html/
+      suffix: .html
+  kafka:
+    #全局配置,kafka服务器
+    bootstrap-servers: 192.168.153.101:9092,192.168.153.102:9092
+    #生产者配置
+    #producer:
+    #消费者配置
+    consumer:
+       #消费组id，必须设置，并且要唯一，
+      group-id: testGroup
+    #数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/bigdata?useUnicode=true&characterEncoding=gbk&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+hbase:
+  config:
+    hbase.zookeeper.quorum: master,slave1,slave2
+    hbase.zookeeper.property.clientPort: 2181
+    fs.defaultFS: hdfs://master:9000
+    fs.trash.interval: 1
+    
+
